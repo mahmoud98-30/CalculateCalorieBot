@@ -47,6 +47,13 @@ if prompt:
     script = script_chain.run(title=title, wikipedia_research=wiki_research)
 
     st.write(title)
-
+    # st.write(script)
+    #
+    # with st.expander('Title History'):
+    #     st.info(title_memory.buffer)
+    #
+    # with st.expander('Script History'):
+    #     st.info(script_memory.buffer)
+    #
     with st.expander('Wikipedia Research'):
         st.info(wiki_research)
