@@ -5,11 +5,14 @@ from apikey import apikey
 import streamlit as st
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain, SequentialChain
+from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
 from langchain.utilities import WikipediaAPIWrapper
 
-os.environ['OPENAI_API_KEY'] = apikey
+try:
+    os.environ['OPENAI_API_KEY'] = apikey
+except:
+    os.environ['OPENAI_API_KEY'] = st.secrets["apikey"]
 
 # App framework
 st.title('Calculate Calorie Chat Bot 🥗🤖')
@@ -44,13 +47,6 @@ if prompt:
     script = script_chain.run(title=title, wikipedia_research=wiki_research)
 
     st.write(title)
-    # st.write(script)
-    #
-    # with st.expander('Title History'):
-    #     st.info(title_memory.buffer)
-    #
-    # with st.expander('Script History'):
-    #     st.info(script_memory.buffer)
-    #
+
     with st.expander('Wikipedia Research'):
         st.info(wiki_research)
