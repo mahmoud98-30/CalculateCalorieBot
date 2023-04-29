@@ -9,10 +9,8 @@ from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
 from langchain.utilities import WikipediaAPIWrapper
 
-try:
-    os.environ['OPENAI_API_KEY'] = apikey
-except:
-    os.environ['OPENAI_API_KEY'] = st.secrets["apikey"]
+# os.environ['OPENAI_API_KEY'] = apikey
+os.environ['OPENAI_API_KEY'] = st.secrets["apikey"]
 
 # App framework
 st.title('Calculate Calorie Chat Bot 🥗🤖')
